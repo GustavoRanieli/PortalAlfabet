@@ -1,0 +1,42 @@
+<%- include ('./partials/header.ejs') %>
+
+    <body>
+        <script src="/script/lacunaScript/indexLacuna.js"></script>
+
+
+        <h1>
+            <%= questionChosen.titulo %>
+        </h1>
+
+        <div class="content">
+            <form action="/lacuna/formEdit/<%= user %>/<%= identifierQuestion %>" method="post" enctype="application/x-www-form-urlencoded" onSubmit="return enviardados()">
+                <label for="">Nome da Atividade</label>
+                <input type="text" name="activityTitle" value="<%= questionChosen.titulo %>" required oninput=""><br><br>
+                <label for="">Selecione o ano letivo:</label>
+                <select name="serieNames" id="serie-names" required>
+                        <option value=""></option>
+                        <option value="1">1ª Série</option>
+                        <option value="2">2ª Série</option>
+                        <option value="3">3ª Série</option>
+                        <option value="4">4ª Série</option>
+                    </select><br><br>
+                <% for(let i = 0; i < questionChosen.perguntas.length; i++){  %>
+                    <label for="">Questão:<%= i %></label>
+                    <input type="text" name="questionsActivities<%=i %>" class="name" value="<%= questionChosen.perguntas[i].pergunta %>">
+                    <label for="">Resposta da Questão:<%= i %></label>
+                    <input id="" type="text" name="responseActivities<%= i %>" required value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>"><br>
+                    <% } %>
+                        <input type="submit" id="submit" value="Enviar">
+            </form>
+
+
+
+
+
+
+
+            <script>
+                verifyUser()
+            </script>
+
+            <%- include ('./partials/footer.ejs') %>

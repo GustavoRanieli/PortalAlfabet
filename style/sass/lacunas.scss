@@ -1,0 +1,189 @@
+// Importação de Fonts
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('../../assets/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url('../../assets/fonts/Montserrat-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('../../assets/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('../../assets/fonts/Montserrat-Medium.ttf');
+}
+
+@mixin text($color: #fff,
+$size: 1vw,
+$family: Montserrat-Bold) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+}
+
+@mixin noMarg() {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header {
+    background-image: linear-gradient(to right, #7269e9 0%, #7269e9 100%);
+    box-sizing: border-box;
+}
+
+.intro {
+    background-image: url('../../assets/img/Fundo.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 50vw;
+    height: 50vw;
+    text-align: center;
+    h1 {
+        @include noMarg();
+        @include text($size: 3vw, $color: #00efe3);
+        padding-top: 5%;
+        text-shadow: -2px 3px 2px #000;
+    }
+    p {
+        @include noMarg();
+        @include text($size: 1.5vw, $color: #7974fc);
+        text-shadow: -2px 3px 2px #000;
+    }
+    img {
+        padding-top: 2%;
+        height: auto;
+        width: 12%;
+    }
+    .hand {
+        position: absolute;
+        margin: 0 30%;
+        -webkit-animation-name: MoveUpDown;
+        animation-name: MoveUpDown;
+        -webkit-animation-duration: 4s;
+        animation-duration: 4s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        width: 40%;
+        height: auto;
+    }
+}
+
+// Menu de Navegação do Usuario
+.usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0.5%;
+    @include text($size: 0.5vw);
+    vertical-align: middle;
+    img {
+        height: auto;
+        width: 2%;
+        margin: 0 0.5%;
+        cursor: pointer;
+    }
+    .hiden {
+        display: none;
+        transition: all 5s;
+        @include text($size: 0.8vw);
+        margin: 0;
+        cursor: pointer;
+    }
+}
+
+//BODY
+.grid-container-main {
+    display: grid;
+    grid-template-columns: auto;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.grid-item-main {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.grid-container-section {
+    display: grid;
+    grid-template-columns: auto;
+    background-color: #e969be;
+    padding: 10%;
+}
+
+.grid-item-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 5%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.grid-container-form {
+    display: grid;
+    grid-column: auto;
+    background-color: #ff7d5c;
+    padding: 5%;
+}
+
+.grid-item-form {
+    background-color: #2196F3;
+    border: 2px solid #000;
+    text-align: center
+}
+
+.grid-container-inputs {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #2196F3;
+    padding: 5%;
+}
+
+.grid-item-inputs {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.divForm {
+    display: none;
+}
+
+.grid-container-section {
+    display: block;
+}
+
+//FOOTER
+footer {
+    @include noMarg();
+    position: relative;
+    margin-top: 30%
+}
+
+.ondas {
+    @include noMarg();
+    position: absolute;
+    bottom: 0;
+}

@@ -1,0 +1,15 @@
+<%- include ('./partials/header.ejs') %>
+
+    <body>
+        <div class="header-menu">
+            <a href="/quiz/gerador/<%= ident %>"><button class="btn btn-success">Gerar Quiz</button></a>
+            <a href="/portal/<%= ident %>  "><button>Voltar ao portal</button></a>
+        </div>
+        <div class="home-body">
+
+            <h1>Gerador de Quiz Unionboard</h1>
+
+            <%- include ('./partials/quizes.ejs') %>
+        </div>
+    </body>
+    <%- include ('./partials/footer.ejs') %>

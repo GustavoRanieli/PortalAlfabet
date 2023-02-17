@@ -1,0 +1,111 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-menu {
+  background-color: rgba(134, 133, 133, 0.582);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.header-menu a {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0.2rem;
+  background-color: greenyellow;
+  text-decoration: none;
+  color: dark;
+  text-align: center;
+}
+
+.quizes-criados {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  padding: 50px;
+  margin: 50px;
+}
+.quizes-criados .quiz-button {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 250px;
+  margin: 10px;
+  text-decoration: none;
+  color: dark;
+  text-align: center;
+}
+.quizes-criados .quiz-button a {
+  text-decoration: none;
+  color: dark;
+  text-align: center;
+}
+.quizes-criados .quiz-button a span {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: dark;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../../assets/img/background-escola.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 0 0.8rem 0;
+}
+.titulo h2 {
+  margin: 0;
+}
+.titulo input {
+  width: 250px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 58%;
+  background-image: url("../../assets/img/folha.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.quiz1, .quiz2, .quiz3, .quiz4, .quiz5 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0 0.5rem 0;
+}
+.quiz1 h4, .quiz2 h4, .quiz3 h4, .quiz4 h4, .quiz5 h4 {
+  text-align: center;
+}
+.quiz1 input, .quiz2 input, .quiz3 input, .quiz4 input, .quiz5 input {
+  width: 300px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin: 5px 0;
+}
+
+/*# sourceMappingURL=quiz.css.map */

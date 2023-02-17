@@ -1,0 +1,145 @@
+// Importação de Fonts
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('../../assets/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url('../../assets/fonts/Montserrat-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('../../assets/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('../../assets/fonts/Montserrat-Medium.ttf');
+}
+
+@mixin text($color: #fff,
+$size: 1vw,
+$family: Montserrat-Bold) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+}
+
+@mixin noMarg() {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    box-sizing: border-box;
+}
+
+body,html{
+    background-color: #00052d;
+    height: 100%;
+
+}
+
+header{
+    background-color: #00052d;
+}
+
+.usuario {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0.5%;
+    @include text($size: 1vw);
+    vertical-align: middle;
+    img {
+        height: auto;
+        width: 2%;
+        margin: 0 0.5%;
+        cursor: pointer;
+    }
+    .hiden {
+        display: none;
+        transition: all 5s;
+        @include text($size: 0.8vw);
+        margin: 0;
+        cursor: pointer;
+    }
+    .menu {
+        transition: all 5s;
+        display: block;
+        list-style-type: circle;
+        -webkit-animation-name: slideInRight;
+        animation-name: slideInRight;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-image: url('/assets/img/fundo404.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 150vh;
+    @include noMarg();
+}
+
+.textContainer{
+    width: 100%;
+    text-align: center;
+    padding-top: 35%;
+
+        h1{
+            @include text($color: #fff,$size: 5vw);
+        }
+        p{
+            @include text($color: #fff,$size: 2vw);
+        }
+
+        .qrcode{
+            height: auto;
+            width: 20%;
+            margin-top: 2%;
+        }
+}   
+
+.imgContainer{
+    width: 100%;
+
+        .c404{
+            height: auto;
+            width: 100%;
+            -webkit-animation-name: MoveUpDown;
+            animation-name: MoveUpDown;
+            -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+}
+
+@keyframes MoveUpDown {
+    0%,
+    100% {
+        top: 60%;
+    }
+    50% {
+        transform: translateY(40px);
+
+    }
+}
+
+@-webkit-keyframes MoveUpDown {
+    0%,
+    100% {
+        top: 0;
+    }
+    50% {
+        transform: translateY(5px);
+
+    }
+}

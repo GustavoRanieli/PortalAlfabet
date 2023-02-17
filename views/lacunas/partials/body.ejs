@@ -1,0 +1,138 @@
+<body>
+
+    <header>
+
+        <div class="usuario" id="usuario">
+            <h2>
+                <%= arrayData[0].name %>
+            </h2>
+            <img src="../../assets/img/user.png" alt="usuario">
+            <img id="engrenagem" src="../../assets/img/gear.png" alt="Engrenagem">
+            <ul id="menu" class="hiden">
+                <li>Dahsboard</li>
+                <li>Sair</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="grid-container-main">
+        <div class="grid-item-main">
+            <h1>Vamos completar?</h1>
+            <input id="criarPerguntas" type="button" value="Criar novas perguntas" onclick=createQuestion(event)>
+            <input type="button" name="" value="Perguntas Criadas" onclick="questionsUser(event)">
+        </div>
+    </div>
+
+    <!-- Formularios Já Criados-->
+    <div class="grid-container-section" id="grid-container-section">
+        <div class="grid-item-section">
+
+            <label for="">Selecione o ano letivo:</label>
+            <select name="serie-names" id="serie-names">
+                <option value="1">1ª Série</option>
+                <option value="2">2ª Série</option>
+                <option value="3">3ª Série</option>
+                <option value="4">4ª Série</option>
+            </select>
+
+            <% for(i = 0; i < arrayData[0].letras.length; i++){ %>
+
+                <div class="quiz-button">
+                    <a href='question/<%= arrayData[0].id %>/<%= i %>' class="link-quiz">
+                        <span><%= arrayData[0].letras[i].titulo %></span>
+                    </a>
+                    <input type="button" value="Editar" onClick="window.location.assign('/lacuna/edit/<%= arrayData[0].id %>/<%= i %>')">
+                    <input type="button" value="Excluir" onClick="myFunction()">
+
+                </div><br>
+
+                <% } %>
+        </div>
+    </div>
+
+    <!-- Formularios de Novas Perguntas -->
+    <div class="divForm" id="divForm">
+        <div class="grid-container-form">
+            <div class="grid-item-form">
+                <h1>Crie suas perguntas</h1>
+
+                <p>Digite suas perguntas conforme o exemplo a baixo:</p>
+
+                <p><b>Titulo:</b> Complete as lacunas (____) com seus determinados verbos:</p>
+
+                <p><i><b>"As meninas + no jardim. (Brincar)"</b></i></p>
+
+                <h3>Digite suas perguntas:</h3>
+            </div>
+
+        </div>
+        <div class="grid-container-inputs">
+            <div class="grid-item-inputs">
+
+                <form action="/lacuna/form/<%= idUser %>" method="post" enctype="application/x-www-form-urlencoded" onSubmit="return enviardados()">
+                    <label for="">Nome da Atividade</label>
+                    <input type="text" name="activityTitle" required oninput=""><br><br>
+
+
+                    <label for="">Digite a primeira questão:</label>
+                    <input id="questionInputs" type="text" name="questionsActivities1" required><br>
+
+
+
+                    <label for="">Digite a segunda questão:</label>
+                    <input id="questionInputs" type="text" name="questionsActivities2" required><br>
+
+                    <label for="">Digite a terceira questão:</label>
+                    <input id="questionInputs" type="text" name="questionsActivities3" required><br>
+
+                    <label for="">Digite a quarta questão:</label>
+                    <input id="questionInputs" type="text" name="questionsActivities4" required><br>
+
+                    <label for="">Digite a quinta questão:</label>
+                    <input id="questionInputs" type="text" name="questionsActivities5" required><br>
+
+            </div>
+
+            <div class="grid-item-inputs">
+                <label for="">Selecione o ano letivo:</label>
+                <select name="serieNames" id="serie-names" required>
+                        <option value=""></option>
+                        <option value="1">1ª Série</option>
+                        <option value="2">2ª Série</option>
+                        <option value="3">3ª Série</option>
+                        <option value="4">4ª Série</option>
+                    </select><br><br>
+
+                <label for="">Resposta:</label>
+                <input type="text" name="responseActivities1" required><br>
+
+                <label for="">Resposta:</label>
+                <input type="text" name="responseActivities2" required><br>
+
+                <label for="">Resposta:</label>
+                <input type="text" name="responseActivities3" required><br>
+
+                <label for="">Resposta:</label>
+                <input type="text" name="responseActivities4" required><br>
+
+                <label for="">Resposta:</label>
+                <input type="text" name="responseActivities5" required><br>
+
+
+            </div>
+        </div>
+        <input type="submit" id="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script>
+        function myFunction() {
+            let text = "Deseja Excluir essa Pergunta?";
+            if (confirm(text) == true) {
+                window.location.assign('/lacuna/formDelete/<%= arrayData[0].id %>/<%= i %>')
+            } else {
+                text = "You canceled!";
+            }
+
+        }
+    </script>

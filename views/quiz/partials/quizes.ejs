@@ -1,0 +1,11 @@
+<div class="quizes-criados">
+    <div class="quizes">
+        <% for(i = 0; i < array[0].quiz.length; i++){ %>
+            <div class="quiz-button">
+                <a href='quiz/<%= ident %>/<%= i %>' class="link-quiz">
+                    <span><%= array[0].quiz[i].titulo %></span>
+                </a>
+            </div>
+            <% } %>
+    </div>
+</div>

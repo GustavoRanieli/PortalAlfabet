@@ -1,0 +1,36 @@
+<%- include ('./partials/header.ejs') %>
+
+    <body>
+        <script src="/script/lacunaScript/indexLacuna.js"></script>
+
+        <h1>
+            <%= questionChosen.titulo %>
+        </h1>
+
+        <div class="content">
+            <% for(let i = 0; i < questionChosen.perguntas.length; i++){  %>
+                <div class="answers">
+
+                    <label for=""><%= questionChosen.perguntas[i].pergunta %></label>
+                    <input type="text" id="inputResp<%= i %>">
+                    <button type="submit" class="botaoEnvioResp">Responder</button>
+                    <label for=""></label>
+                    <input id="respCerta<%= i %>" type="hidden" name="" value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>">
+                    <i id="check<%= i %>" style="display: none;"><img src="/assets/img/Check.jpeg" alt=""></i>
+                    <i id="noCheck<%= i %>" style="display: none;"><img src="/assets/img/NoCheck.jpeg" alt=""></i>
+                </div>
+                <% } %>
+
+                    <br><input type="button" value="Resetar respostas" onClick="window.location.reload(false)">
+                    <input type="button" value="Voltar" onClick="window.location.assign('/lacuna/home/<%= user %>')">
+        </div>
+        <div class="finish">
+            <span></span>
+        </div>
+
+
+        <script>
+            verifyUser()
+        </script>
+
+        <%- include ('./partials/footer.ejs') %>
