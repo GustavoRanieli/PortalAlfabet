@@ -1,5 +1,6 @@
 {
     "name": "portal",
+    "proxy": "192.168.1.11:8031",
     "version": "1.0.0",
     "description": "Portal de Alfabetização para interação com as atividades",
     "main": "portal.js",
@@ -17,7 +18,6 @@
         "mongoose": "^6.9.0",
         "nodemon": "^2.0.20",
         "path": "^0.12.7",
-        "sass": "^1.58.1",
-        "socket.io": "^4.6.0"
+        "sass": "^1.58.1"
     }
 }

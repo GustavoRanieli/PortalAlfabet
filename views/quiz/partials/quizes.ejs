@@ -1,11 +1,38 @@
+<select name="serie-names" id="serie-names" onchange="filterSchoolYear()">
+    <option value="Todos">Todos</option>
+    <option value="1">1ª Série</option>
+    <option value="2">2ª Série</option>
+    <option value="3">3ª Série</option>
+    <option value="4">4ª Série</option>
+</select>
 <div class="quizes-criados">
     <div class="quizes">
         <% for(i = 0; i < array[0].quiz.length; i++){ %>
-            <div class="quiz-button">
+            
+            <div id="quiz-button" class="quiz-button">
                 <a href='quiz/<%= ident %>/<%= i %>' class="link-quiz">
-                    <span><%= array[0].quiz[i].titulo %></span>
+                    <span id="questionQuiz" class="<%= array[0].quiz[i].Ano %>"><%= array[0].quiz[i].titulo %></span>
                 </a>
             </div>
+            <a class="buttonEditar" href="edit/<%= user %>/<%= i %>">editar</a>
+            <form action="/quiz/home/quiz/delete/<%= user %>/<%= array[0].quiz[i].id %>" method="post" onsubmit="confirmDelete(event,this)">
+                <input type="submit" class="buttonDeletar" value="Deletar">
+                <input type="hidden" name="tituloDoQuiz"  value="<%= array[0].quiz[i].id %>">
+
+            </form>
+
             <% } %>
     </div>
 </div>
+<script type="text/javascript" src="/script/quiz/renderizaQuizPorAno.js"></script>
+
+<script>
+    function confirmDelete(event, form){
+    
+        event.preventDefault()
+        var decision = confirm('voce quer deletar esse quiz?')
+        if(decision){
+            form.submit()
+        }
+    }
+</script>

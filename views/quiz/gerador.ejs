@@ -4,85 +4,28 @@
         <div class="header-menu">
             <a href="/quiz/home/<%= ident %> " class="float-right"><button class="btn btn-success">Voltar</button></a>
         </div>
-
-
-
+        <input id="quantidadeQuiz" type="number">
+        <button id="enviarNumero"></button>
         <form action="/quiz/resposta/<%= ident %>" method="POST" enctype="application/x-www-form-urlencoded">
-            <div class="container">
+            <div id="Container" class="container">
+                <input type="hidden" name="number" id="value_model">
                 <div class="titulo">
                     <h2>Titulo</h2>
-                    <input type="text" name="titulo" required placeholder="titulo" id="">
+                    <input type="text" name="titulo" titulo placeholder="titulo">
                 </div>
 
-                <div class="quiz1">
-                    <div class="pergunta1">
-                        <h4>Primeira Pergunta</h4>
-                        <input type="text" placeholder="titulo" name="pergunta1" id="" required>
-                    </div>
-                    <div class="opcoes">
-                        <div class="correta">
-                            <input type="text" placeholder="opção correta" name="opcao_correta1" required id=""><br>
-                        </div>
-                        <div class="errada">
-                            <input type="text" placeholder="opção errada" name="opcao_errada1" required id="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quiz2">
-                    <h4>Segunda Pergunta</h4>
-                    <input type="text" placeholder="titulo" name="pergunta2" required id="">
-                    <div>
-                        <input type="text" placeholder="opção correta" name="opcao_correta2" required id="">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="opção errada" name="opcao_errada2" required id="">
-                    </div>
-                </div>
-
-                <div class="quiz3">
-                    <h4>Terceira Pergunta</h4>
-                    <input type="text" placeholder="titulo" name="pergunta3" required id="">
-                    <div>
-                        <input type="text" placeholder="opção correta" name="opcao_correta3" required id="">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="opção errada" name="opcao_errada3" required id="">
-                    </div>
-                </div>
-
-                <div class="quiz4">
-                    <h4>Quarta Pergunta</h4>
-                    <input type="text" placeholder="titulo" name="pergunta4" required id="">
-                    <div>
-                        <input type="text" placeholder="opção correta" name="opcao_correta4" required id="">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="opção errada" name="opcao_errada4" required id="">
-                    </div>
-                </div>
-
-                <div class="quiz5">
-                    <h4>Quinta Pergunta</h4>
-                    <input type="text" placeholder="titulo" name="pergunta5" required id="">
-                    <div>
-                        <input type="text" placeholder="opção correta" name="opcao_correta5" required id="">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="opção errada" name="opcao_errada5" required id="">
-                    </div>
-                </div>
                 <div class="graus">
                     <label for="">Selecione o ano letivo:</label>
                     <select name="serieNames" id="serie-names">
-                <option value="1">1ª Série</option>
-                <option value="2">2ª Série</option>
-                <option value="3">3ª Série</option>
-                <option value="4">4ª Série</option>
-                </select>
+                        <option value="1">1ª Série</option>
+                        <option value="2">2ª Série</option>
+                        <option value="3">3ª Série</option>
+                        <option value="4">4ª Série</option>
+                    </select>
                 </div>
-                <button class="btn btn-success">Salvar</button>
             </div>
+                <button class="btn btn-success">Salvar</button>
         </form>
     </body>
+    <script type="text/javascript" src="/script/quiz/geradorQuiz.js"></script>
     <%- include ('./partials/footer.ejs') %>

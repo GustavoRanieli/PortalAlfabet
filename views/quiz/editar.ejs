@@ -1,0 +1,68 @@
+<%- include ('./partials/header.ejs') %>
+<body onload="busca()">
+    
+
+<form action="/quiz/home/quiz/update/<%= id %>" method="post">
+    <input type="hidden" name="tamanhoDoQuiz" class="tamanhoDoQuiz"  value="<%= perguntas.length %>">
+    <input type="hidden" class='indexDoQuiz' name="indexDoQuiz" value="<%=quiz%>">
+    <input type="hidden" class="idDoQuiz" name="idDoQuiz"  value="<%= quizEscolhido.id%>">
+    <input type="hidden" name="id" class="idUser" value="<%= id%>">
+    <input type="text" placeholder="titulo" name="titulo" value="<%= quizEscolhido.titulo %>" required><hr>
+
+
+    <div class="content" id="Content">
+
+    </div>
+
+        <div class="graus">
+            <label for="">Selecione o ano letivo:</label>
+                <select name="serieNames" id="serie-names">
+                        <option value="1">1ª Série</option>
+                        <option value="2">2ª Série</option>
+                        <option value="3">3ª Série</option>
+                        <option value="4">4ª Série</option>
+                </select>
+        </div>
+        <input type="submit" value="Salvar alterações">
+</form>
+<a href="/quiz/home/<%= id %>">Voltar</a>
+</body>
+<script>
+    let dataId = document.querySelector('.idUser').value
+    let dataIndex = document.querySelector('.indexDoQuiz').value
+     let data ={}
+    async function busca(){
+    await fetch(`http://192.168.1.11:8031/quiz/quizFetch/${dataId}/${dataIndex}`, {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data)
+    }).then(resp => {
+          return resp.json()
+    }).then((data) => {
+        let form = document.querySelector('#Content')
+        let j = 0
+
+        let tamanhoDoQuiz = document.querySelector('.tamanhoDoQuiz').value
+        let number = parseInt(tamanhoDoQuiz)
+
+        console.log(data)
+        for( i = 0; i < number; i++){
+            let div =  `
+                <div class="quiz${i}">
+                <input type="text" placeholder='titulo da pergunta' name="pergunta${i}" value=" ${data.perguntas[i].pergunta} " required></input>
+                <input type="text" placeholder='resposta certa' name="opcao_correta${i}" value=" ${data.perguntas[i].resposta.resposta_certa.opcao} " required></input>
+                <input type="text"  placeholder='resposta errada' name="opcao_errada${j + 1}" value="${data.perguntas[i].resposta.respostas_erradas[0].opcao}"required></input>
+                <input type="text"  placeholder='resposta errada' name="opcao_errada${j + 2}" value="${data.perguntas[i].resposta.respostas_erradas[1].opcao}"required></input>
+                <input type="text"  placeholder='resposta errada' name="opcao_errada${j + 3}" value="${data.perguntas[i].resposta.respostas_erradas[2].opcao}"required></input>
+                `
+                form.innerHTML += div
+                j = j + 3
+            }       
+        })
+    }
+    
+</script>
+
+<%- include ('./partials/footer.ejs') %>

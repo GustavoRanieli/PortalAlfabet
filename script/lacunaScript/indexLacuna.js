@@ -33,8 +33,6 @@ function enviardados() {
     }
 }
 
-
-
 const createQuestion = function(e) {
     let divForm = document.getElementById('divForm');
     let divUserQuestion = document.getElementById('grid-container-section');
@@ -48,3 +46,36 @@ const questionsUser = function(e) {
     divForm.style.display = "none";
     divUserQuestion.style.display = "block";
 }
+
+function filterSchoolYear(){
+    let select = document.getElementById('serie-names')
+    let opcaoValor= select.options[select.selectedIndex].value;
+
+    let question = document.querySelectorAll('#questionLacunas')
+    let classQuestion = question.className
+
+    let divQuestion = document.querySelectorAll('#quiz-button')
+    for (let i = 0; i < divQuestion.length; i++) {
+    
+        if (opcaoValor == question[i].className || opcaoValor == "Todos") {
+            divQuestion[i].style.display = "block"
+        }else{
+            divQuestion[i].style.display = "none"
+        }
+    
+    }
+    
+    console.log(opcaoValor); // ferrari
+    console.log(classQuestion); // ferrari
+    console.log(divQuestion)
+    
+}
+
+function replaceResponse(){
+    let response = document.getElementById('answerQuestion').value
+    let responseReplace = response.replace('____', '+')
+    
+    response = responseReplace
+}
+
+

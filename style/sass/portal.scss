@@ -22,10 +22,11 @@
 // Variaveis
 @mixin text($color: #fff,
 $size: 1vw,
-$family: Montserrat-Bold) {
+$family: Montserrat-Bold, $font: normal) {
     color: $color;
     font-size: $size;
     font-family: $family;
+    font-weight: $font;
 }
 
 @mixin noMarg() {
@@ -42,68 +43,46 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background: rgb(67,54,140);
+    background: linear-gradient(90deg, rgba(67,54,140,1) 0%, rgba(97,71,150,1) 20%, rgba(67,54,140,1) 40%, rgba(97,71,150,1) 60%, rgba(67,54,140,1) 80%, rgba(97,71,150,1) 100%);
 }
 
 header {
-    background-image: linear-gradient(to right, #7269e9 0%, #7269e9 100%);
+    background: rgb(87,125,176);
+    background: linear-gradient(90deg, rgba(87,125,176,1) 0%, rgba(99,86,166,1) 63%);
     box-sizing: border-box;
-}
+    display: grid;
+    grid-template-columns: 50% 50%;
 
-.intro {
-    background-image: url('../../assets/img/Fundo.png');
-    background-repeat: no-repeat;
-    background-size: 100vw 60vw;
-    height: 50vw;
-    text-align: center;
-    h1 {
-        @include noMarg();
-        @include text($size: 3vw, $color: #00efe3);
-        padding-top: 5%;
-        text-shadow: -2px 3px 2px #000;
-    }
-    p {
-        @include noMarg();
-        @include text($size: 1.5vw, $color: #7974fc);
-        text-shadow: -2px 3px 2px #000;
-    }
-    img {
-        padding-top: 2%;
-        height: auto;
-        width: 12%;
-    }
-    .hand {
-        position: absolute;
-        margin: 0 30%;
-        -webkit-animation-name: MoveUpDown;
-        animation-name: MoveUpDown;
-        -webkit-animation-duration: 4s;
-        animation-duration: 4s;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        width: 40%;
-        height: auto;
-    }
+        .UnionBoard{
+            height: auto;
+            width: 20%;
+            margin: 2% 3%;
+        }
 }
-// ==========================================
+// ============================
 // Menu de Navegação do Usuario
 .usuario {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
     justify-content: flex-end;
-    padding: 0.5%;
-    @include text($size: 0.5vw);
-    vertical-align: middle;
-    img {
+    padding: 2%;
+    @include text($size: 0.6vw, $font: bold, $family: Montserrat-ExtraBold);
+    h2{
+        padding-top: 0.5%;
+    }
+    svg {
         height: auto;
-        width: 2%;
+        width: 5%;
         margin: 0 0.5%;
         cursor: pointer;
+        fill: #fff;
+        margin-left: 2%;
     }
     .hiden {
         display: none;
         transition: all 5s;
-        @include text($size: 0.8vw);
+        @include text($size: 0.8vw, $font: bold, $family: Montserrat-ExtraBold);
         margin: 0;
         cursor: pointer;
     }
@@ -120,101 +99,264 @@ header {
     }
 }
 // ==========================================
-// Div dos Cards 
-.divCard {
-    display: flex;
-    flex-direction: row;
-    padding: 3%;
-    background-color: #fff;
-    .alfabeto {
-        background-image: url('/assets/img/layoutAlfa.png')
-    }
-    .quizzes{
-        background-image: url('/assets/img/Quizzes.png');
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position: bottom;
-
-    }
-    .letras{
-        background-image: url('/assets/img/completaFrase.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 0vh -10vh;
-    }
-    // Cada Card
-    .card {
-        height: 1vw;
-        position: relative;
-        padding: 7%;
-        box-sizing: border-box;
-        display: flex;
-        align-items: flex-start;
-        text-decoration: none;
-        border: 4px solid;
-        border-radius: 10px;
-        margin: 0% 2%;
-        background-size: cover;
-        width: 60%;
-        .inner {
-            height: 2vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: #090C9B;
-            border: transparent;
-            border-radius: 10px;
-            box-sizing: border-box;
-            padding: 15%;
-            padding-bottom: 25%;
-            margin-top: -35%;
-            margin-left: -35%;
+// Div inicio
+.intro {
+    @include noMarg();
+    background-image: url('../../assets/img/fundoAstronauta.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    padding: 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+        .portal{
+            img{
+                padding-top: 2%;
+                height: auto;
+                width: 80%;
+                margin: 10% 0%;
+            }
         }
-        .title {
-            @include text($color: #fff,$size: 1.2vw);
-            text-shadow: 0px 2px 2px #7974fc;
-            position: relative;
+        .astronauta{ 
+            img {
+                padding-top: 2%;
+                height: auto;
+                width: 100%;
+                margin: 10% 25%;
+            }
         }
-        .subtitle {
-            @include text($color: #fff,$size: 0.8vw )
-        }
+    
+    .hand {
+        position: absolute;
+        margin: 0 30%;
+        -webkit-animation-name: MoveUpDown;
+        animation-name: MoveUpDown;
+        -webkit-animation-duration: 4s;
+        animation-duration: 4s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        width: 40%;
+        height: auto;
     }
 }
 // ==========================================
+// Div dos Cards
+.containerSlid{
+        .tituloSlides{
+            @include text($size: 2vw, $color: null, $font: bold, $family: Montserrat-ExtraBold);
+            margin-left: 4%;
+            text-shadow: 0px 0px 9px #fff;
+            background: rgb(221,222,220);
+            background: -webkit-linear-gradient(90deg, rgba(221,222,220,1) 0%, rgba(176,180,180,1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .splide__arrows{
+            top: 35%;
+            svg{
+                opacity: 1;
+                height: auto;
+                width: 180%;
+                
+                path{
+                    fill: #fff;
+                }
+            }
+        }
+        .splide{
+            margin-top: 2%;
+            margin-bottom: 2%; 
+
+        }
+        .splide__slide{
+            border: transparent;
+            border-radius: 10px;
+
+                a{
+                    text-decoration: none;
+                }
+                .block{
+                    height: 15vw; 
+                    width: 90%; 
+                    margin-left: 1%;
+                    border: transparent;
+                    -webkit-box-shadow: 0px 0px 15px -1px #000000; 
+                    box-shadow: 0px 0px 15px -1px #000000;  
+                    z-index: -1;
+                        .title{
+                            @include text($size: 1vw,$color: #fff);
+                            margin: 0.5% 5%;
+                            position: absolute;
+                            bottom: 8%;
+                            z-index: 2;
+                                @media (max-width: 1899px){
+                                    bottom: 5%; 
+                                }
+                                @media (max-width: 1680px){
+                                    bottom: 25%; 
+                                }
+                                @media (max-width: 1545px) {
+                                    bottom: 30%;   
+                                    margin: 0.5% 1%;                            
+                                }
+                                @media (max-width: 1360px) {
+                                    bottom: 40%;                           
+                                }
+                        }
+                        .large{
+                            bottom: 5%;
+                                @media (max-width: 1899px){
+                                    margin: 0.5% 1%;
+                                    bottom: 2%;
+                                }
+                                @media (max-width: 1680px){
+                                    bottom: 20%; 
+                                }
+                                @media (max-width: 1545px) {
+                                    bottom: 25.5%;   
+                                    margin: 0.5% 1%;                            
+                                }
+                                @media (max-width: 1360px) {
+                                    bottom: 36%;                           
+                                }
+                        }
+                }
+                #cardBlue{
+                    left: -3%;
+                    bottom: 0;
+                    width: 80%;
+                    position: absolute;
+                    z-index: 1;
+                        @media (max-width: 1680px){
+                            bottom: 20%; 
+                        }
+                        @media (max-width: 1545px) {
+                            bottom: 25%;                               
+                        }
+                        @media (max-width: 1360px) {
+                            bottom: 35%;                           
+                        }
+                }
+                .alfabeto{
+                    background-image: url('../../assets/img/layoutAlfa2.png');
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    background-position: 0;
+
+                }
+                .quiz{
+                    background-image: url('../../assets/img/Quizzes2.png');
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    // background-position-y: -3vw;
+                        // @media (max-width: 1900px){
+                        //     background-position-y: -6vw;   
+                        // }
+                }
+                .lacunas{
+                    background-image: url('../../assets/img/completaFrase2.png');
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    // background-position-y: -8vw;
+                }
+        }
+}
+// ==========================================
+.tituloLinhaTemp{
+    @include text($size: 2vw, $color: null, $font: bold, $family: Montserrat-ExtraBold);
+    margin-left: 4%;
+    margin-bottom: 7%;
+    text-shadow: 0px 0px 9px #fff;
+    background: rgb(221,222,220);
+    background: -webkit-linear-gradient(90deg, rgba(221,222,220,1) 0%, rgba(176,180,180,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .linhaTemporal {
     display: grid;
     grid-template-columns: auto;
     width: 100%;
+    z-index: 10;
     .flexRow {
         display: flex;
         flex-direction: row;
         margin: 1% 0%;
-        div {
-            text-align: center;
-            width: 100%;
-            height: 110%;
-            border: 1px solid #7974fc;
-            border-radius: 15px;
-            margin: 0 10%;
-            padding: 2% 0;
-            -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
-            background-image: url('../../assets/img/layoutCard2.png');
-            @include text($color: #090C9B);
+            button{
+               background: transparent; 
+               border: transparent;
+            }
+            .botao{
+                height: auto;
+                width: 32%;
+                margin-bottom: 2%;
+            }
+            .Divano1{
+                position: relative;
+                bottom: -75%;
+                -webkit-animation-name: MoveUpDown;
+                animation-name: MoveUpDown;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .Divano2{
+                position: relative;
+                bottom: -10%;
+                -webkit-animation-name: MoveUpDown2;
+                animation-name: MoveUpDown2;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .Divano3{
+                position: relative;
+                bottom: -5%;
+                -webkit-animation-name: MoveUpDown3;
+                animation-name: MoveUpDown3;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .Divano4{
+                position: relative;
+                bottom: 15%;
+                right: 5%;
+                -webkit-animation-name: MoveUpDown4;
+                animation-name: MoveUpDown4;
+                -webkit-animation-duration: 4s;
+                animation-duration: 4s;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            img{
+                height: auto;
+                width: 50%;
+            }
             input {
                 display: none
             }
             select {
+                display: none;
+                position: absolute;
+                top: -50%;
+                left: 25%;
                 background: transparent;
-                background-color: #090C9B;
+                background-color: #624896;
                 width: 50%;
-                height: 15%;
-                border-radius: 15px;
+                height: auto;
+                border: 2px solid #fff;
+                border-radius: 10px;
                 @include text($color: #fff);
                 text-align: center;
+                overflow: hidden;
+                cursor: pointer;
                 option {
-                    @include text($color: #fff, $size: 00.8vw)
+                    margin-top: 5%;
+                    @include text($color: #fff, $size: 1.2vw);
+                    text-decoration:underline;
                 }
             }
         }
@@ -222,7 +364,7 @@ header {
             text-align: start;
             margin: 10% 20%;
             list-style-position: inside;
-            background-color: #090C9B;
+            background-color: #624896;
             border-radius: 10px;
             width: 60%;
             padding: 0;
@@ -236,18 +378,91 @@ header {
                 @include text($color: 000, $size: 1vw);
                 margin-left: 10%;
                 -webkit-animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	            animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
             }
         }
     }
+
+.modal{
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;    
+        .btn {
+            padding: 5% 30%;
+            cursor: pointer;
+            fill: #fff;
+            border: transparent;
+            color: transparent;
+            background-color: transparent;
+        }     
+        .btn:active {
+            fill: rgb(129, 255, 166);
+        }
+        .modal-content {
+            margin: 0 auto;
+            margin-top: 3%;
+            max-width: 600px;
+            background-color: #624896;
+            padding: 0;
+            box-shadow: 0 0 2px #000000;
+            border: #FFF 2px solid;
+            border-radius: 10px;
+        }
+        
+        .modal-header h1{
+            @include text($color: #fff,$size: 1vw, $family: Montserrat-ExtraBold);
+            text-align: center;
+        }
+        
+        .modal-header, .modal-body, .modal-footer{
+            padding: 10px;
+        }
+        
+        .modal-header{
+            text-align: center;
+            display: grid;
+            grid-template-columns: 90% 10%
+        }
+        
+        .modal-body{
+            a{
+                text-decoration: none;
+                @include text($color: #FFF,$size: 1vw,)
+            }
+            ul{
+                    li{
+                        margin: 2% 25%;
+                        text-decoration: underline;
+                        padding-left: 2%;
+                    }
+                    li::marker{
+                        content: '🚀';
+                    }
+            }
+        }
 }
 
 footer {
     @include noMarg();
-    .ondas {
+    margin-top: -25%;
+    .linha{
+        z-index: -1;
         position: absolute;
+        height: auto;
+        width: 100%;
+    }
+    .fundo{
+        z-index: -2;
+        position: relative;
+        height: auto;
+        width: 100%;
     }
 }
+
 // ==========================================
 // Seção de animações
 @-webkit-keyframes slideInRight {
@@ -273,27 +488,85 @@ footer {
         transform: translateX(0);
     }
 }
+
 // ==========================================
 @keyframes MoveUpDown {
     0%,
     100% {
-        top: 60%;
+        top: 35%;
     }
     50% {
-        top: 40%;
-        opacity: 0.2;
+        top: 46%;
     }
 }
 
 @-webkit-keyframes MoveUpDown {
     0%,
     100% {
-        top: 0;
-        opacity: 0.2;
+        top: 35%;
     }
     50% {
-        top: 50%;
-        opacity: 0.2;
+        top: 46%;
+    }
+}
+
+@keyframes MoveUpDown2 {
+    0%,
+    100% {
+        top: 10%;
+    }
+    50% {
+        top: 0%;
+    }
+}
+
+@-webkit-keyframes MoveUpDown2 {
+    0%,
+    100% {
+        top: 10%;
+    }
+    50% {
+        top: 0%;
+    }
+}
+
+@keyframes MoveUpDown3 {
+    0%,
+    100% {
+        top: 0%;
+    }
+    50% {
+        top: 10%;
+    }
+}
+
+@-webkit-keyframes MoveUpDown3 {
+    0%,
+    100% {
+        top: 0%;
+    }
+    50% {
+        top: 10%;
+    }
+}
+
+@keyframes MoveUpDown4 {
+    0%,
+    100% {
+        top: -10%;
+    }
+    50% {
+        top: -20%;
+    }
+}
+
+@-webkit-keyframes MoveUpDown4 {
+    0%,
+    100% {
+        top: -10%;
+    }
+    50% {
+        top: -20%;
     }
 }
 // ==========================================

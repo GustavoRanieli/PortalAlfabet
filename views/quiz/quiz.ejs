@@ -8,26 +8,23 @@
         <h1>
             <%= quizEscolhido.titulo %>
         </h1>
+        <input id="identificador" type="hidden" value="<%= ident %>">
+        <input type="hidden" id="User" value="<%= user %>">
 
-        <div class="content">
-            <% for(let i = 0; i < quizEscolhido.perguntas.length; i++){  %>
-                <span class="tituloPergunta"><%= quizEscolhido.perguntas[i].pergunta %></span>
-                <div class="answers">
-                    <input type="checkbox" class="resposta_certa resp<%=i%>" data-correct="<%= quizEscolhido.perguntas[i].resposta[0].correta %>">
-                    <%= quizEscolhido.perguntas[i].resposta[0].opcao %>
-                        </input><br>
-                        <input type="checkbox" class="resposta_errada resp<%=i%>" data-correct="<%= quizEscolhido.perguntas[i].resposta[1].correta %>">
-                        <%= quizEscolhido.perguntas[i].resposta[1].opcao %>
-                            </input>
-                </div>
-                <% } %>
-        </div>
+        <div class="content" id="Content"></div>
+        
         <div class="finish">
             <span></span>
             <button class="verificar">Verificar</button>
         </div>
 
+        <script type="text/javascript" src="/script/quiz/inputRandom.js"></script>
     </body>
-    <script src="/script/quiz/quizScript.js" type="text/javascript"></script>
+
+    <script  type="text/javascript" src="/script/quiz/quizScript.js" ></script>
+    <script>
+        
+
+    </script>
 
     <%- include ('./partials/footer.ejs') %>

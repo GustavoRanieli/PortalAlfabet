@@ -21,13 +21,18 @@
                         <option value="4">4ª Série</option>
                     </select><br><br>
                 <% for(let i = 0; i < questionChosen.perguntas.length; i++){  %>
+                    <input type="hidden" name="questionLength" value="<%= questionChosen.perguntas.length %>">
                     <label for="">Questão:<%= i %></label>
-                    <input type="text" name="questionsActivities<%=i %>" class="name" value="<%= questionChosen.perguntas[i].pergunta %>">
+                    <input id="answerQuestion" type="text" name="questionsActivities<%=i %>" class="name" value="<%= questionChosen.perguntas[i].pergunta.replace(/ /g, '-')%>">
+                    
                     <label for="">Resposta da Questão:<%= i %></label>
-                    <input id="" type="text" name="responseActivities<%= i %>" required value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>"><br>
+                    <input  type="text" name="responseActivities<%= i %>" required value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>"><br>
+               
+                   
                     <% } %>
                         <input type="submit" id="submit" value="Enviar">
-            </form>
+                        <input type="button" value="Voltar" onClick="window.location.assign('/lacuna/home/<%= user %>')">
+            </form> 
 
 
 
@@ -37,6 +42,7 @@
 
             <script>
                 verifyUser()
+                replaceResponse()
             </script>
 
             <%- include ('./partials/footer.ejs') %>

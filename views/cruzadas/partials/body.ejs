@@ -1,0 +1,61 @@
+
+    <label for="">Selecione o ano letivo:</label>
+    <select name="serie-names" id="serie-names" >
+        <option value="Todos">Todos</option>
+        <option value="1">1ª Série</option>
+        <option value="2">2ª Série</option>
+        <option value="3">3ª Série</option>
+        <option value="4">4ª Série</option>
+    </select>
+    
+    <% for(i=0; i < arrayDataUser[0].cruzadas.length; i++){ %>
+    
+        <div style="display: block;" id="quiz-button" class="quiz-button">
+            <a href='cruzadas/<%= arrayDataUser[0].id %>/<%= i %>' class="link-quiz">
+                <span id="questionLacunas" class="<%= arrayDataUser[0].cruzadas[i].Ano %>">
+                    <%= arrayDataUser[0].cruzadas[i].titulo %>
+                </span>
+            </a>
+            <input type="button" value="Editar"
+                onClick="window.location.assign('/cruzadas/edit/<%= arrayDataUser[0].id %>/<%= i %>')">
+            <input type="button" value="Excluir"
+                onClick="window.location.assign('/cruzadas/formDelete/<%= arrayDataUser[0].id %>/<%= arrayDataUser[0].cruzadas[i].id %>')">
+        </div><br>
+    
+        <% } %>
+        <br>
+       
+       
+       
+       <input id="totalCrosswords" type="number">
+        <button id="sendNumberTotalCrossword">Criar</button>
+
+        <form action="/cruzadas/form/<%= idUser %>" method="post" enctype="application/x-www-form-urlencoded" onSubmit="return enviardados()">
+            <div id="crosswordCreationForm" class="container">
+
+                <input type="hidden" name="number" id="value_model">
+
+                <div class="titleQuestion">
+                    <h2>Titulo do Exercício</h2>
+                    <input type="text" name="activityTitle" titulo placeholder="Titulo do Exercicio" id="">
+                </div>
+
+                <div class="schoolYear">
+                    <label for="">Selecione o ano letivo:</label>
+                    <select name="serieNames" id="serie-names" required>
+                        <option value=""></option>
+                        <option value="1">1ª Série</option>
+                        <option value="2">2ª Série</option>
+                        <option value="3">3ª Série</option>
+                        <option value="4">4ª Série</option>
+                    </select><br><br>
+
+                </div>
+            </div>
+            <input type="submit" id="submit" value="Enviar">
+        </form>
+    
+
+
+<input type="button" value="Voltar" onClick="window.location.assign('/portal/<%= arrayDataUser[0].id %>')">
+<script type="text/javascript" src="/script/cruzadasScript/geradorCruzadas.js"></script>

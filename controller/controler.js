@@ -58,9 +58,52 @@ const controler = {
                 let user = req.params.id
                 console.warn(`Erro ao redirecionar`)
                 res.render('404', {user})
-                return
+                return 
             })
-    }
-}
+    },
 
-module.exports = controler
+    fetch: async(req, res) => {
+        await NewUser.findById(req.body.id)
+            .then( usuario => {
+                let quiTarget = usuario.quiz[req.body.index]
+                console.log('caiu')
+                res.send(quiTarget)
+            })
+    },
+ 
+    temp: async(req, res) => {
+        let ativ = [];
+        let result = {
+            info: [],
+            atividade: req.body.atividade,
+            Ano: req.body.Ano,
+            id: req.body.id
+        };
+        await NewUser.findById(req.body.id)
+            .then(PrimeiroAno => { 
+                let atividade = req.body.atividade
+                if(PrimeiroAno[atividade].length == 0){
+                    res.send(ativ);
+                }else{
+                    for(i = 0; i < PrimeiroAno[atividade].length; i++) {
+                        if(PrimeiroAno[atividade][i].Ano == req.body.Ano){
+                            result.info.push({
+                                index: i,
+                                titulo: PrimeiroAno[atividade][i].titulo
+                            })
+                        }else{}  
+                    } 
+                    ativ.push(result)
+                    res.send(ativ)
+                }
+                 
+            })
+    }, 
+
+    alfabeto: function ( req, res ){
+        let user = req.params.id
+        res.render('alfabeto.ejs', { user })
+    },
+};
+ 
+module.exports = controler 

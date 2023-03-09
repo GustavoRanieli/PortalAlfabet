@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letras</title>
+    <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+    <script type="text/javascript" src="/script/alfabetoWhit.js"></script>
+    <link rel="stylesheet" href="/style/css/alfabeto.css">
+    <link rel="shortcut icon" href="/assets/img/cubo.ico" type="image/x-icon">
+</head>
+<body >
+    <header>
+        <nav class="Alfabeto">
+            <div class="container">
+                <h5>Como usar:</h5>
+                <audio autoplay controls>
+                    <source src="../audio/Intro.mp3" type="audio/mp3"> 
+                </audio>
+                <div class="containerButtons">
+                    <button id="borracha">Apagar</button>
+                    <a href="/portal/<%= user %>"><button id="voltar">Voltar</button></a>
+                </div>
+            </div>
+            <button id="letra" value="LetraA">A</button>
+            <button id="letra" value="LetraB">B</button>
+            <button id="letra" value="LetraC">C</button>
+            <button id="letra" value="LetraD">D</button>
+            <button id="letra" value="LetraE">E</button>
+            <button id="letra" value="LetraF">F</button>
+            <button id="letra" value="LetraG">G</button>
+            <button id="letra" value="LetraH">H</button>
+            <button id="letra" value="LetraI">I</button>
+            <button id="letra" value="LetraJ">J</button>
+            <button id="letra" value="LetraK">K</button>
+            <button id="letra" value="LetraL">L</button>
+            <button id="letra" value="LetraM">M</button>
+            <button id="letra" value="LetraN">N</button>
+            <button id="letra" value="LetraO">O</button>
+            <button id="letra" value="LetraP">P</button>
+            <button id="letra" value="LetraQ">Q</button>
+            <button id="letra" value="LetraR">R</button>
+            <button id="letra" value="LetraS">S</button>
+            <button id="letra" value="LetraT">T</button>
+            <button id="letra" value="LetraU">U</button>
+            <button id="letra" value="LetraV">V</button>
+            <button id="letra" value="LetraW">W</button>
+            <button id="letra" value="LetraX">X</button>
+            <button id="letra" value="LetraY">Y</button>
+            <button id="letra" value="LetraZ">Z</button>
+        </nav>
+    </header>
+    
+    <main>
+        <canvas id="myCanvas"></canvas>
+    </main>
+</body>

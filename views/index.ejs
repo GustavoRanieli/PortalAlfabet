@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../style/css/portal.css">
     <link rel="shortcut icon" href="../assets/img/saturno.png" type="image/x-icon">
     <title>Portal</title>
@@ -13,12 +14,14 @@
 <body>
     <!-- Menu de nvagação do Usuario -->
     <header>
+        <img class="UnionBoard" src="../assets/img/UnionBoard Branco.png" alt="Logo Union">
         <div class="usuario">
             <h2>
-                <%= user %>
+                Bem vindo, <%= user %>
             </h2>
-            <img src="../assets/img/user.png" alt="usuario">
-            <img id="engrenagem" src="../assets/img/gear.png" alt="Engrenagem">
+            <svg id="engrenagem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/>
+            </svg>
             <ul id="menu" class="hiden">
                 <li>Dahsboard</li>
                 <li>Sair</li>
@@ -28,86 +31,247 @@
 
     <main>
         <div class="intro">
-            <div>
-                <h1>Portal de Alfabetização</h1>
-                <p>Ensine seus alunos com interatividade,<br> desça para conhecer nossos recursos</p>
-                <img src="../assets/img/Astronauta.png" alt="Astronauta">
+            <div class="astronauta">
+                <img id="Astronauta" src="../assets/img/Astronauta.png" alt="Astronauta">
             </div>
-            <div class="hand">
+            <div class="portal">
+                <img src="../assets/img/textPortal.png" alt="Texto do Portal">
+            </div>
+            <!-- <div class="hand">
                 <img src="../assets/img/tap.png" alt="Movimento Touch" id="Hand">
-            </div>
+            </div> -->
         </div>
 
         <!-- Cards das Atividades -->
-        <div class="mainCards">
-            <div class="divCard">
-                <a href="https://google.com" id="card" class="card  alfabeto">
-                    <div class="inner">
-                        <h2 class="title">Alfabeto</h2>
-                        <time class="subtitle">Desenhe as Letras do Alfabeto<time>
-                    </div>
-                </a>
-                    
-                <a href="/quiz/home/<%= idet %> " id="card" class="card quizzes">
-                    <div class="inner">
-                        <h2 class="title">Gerador de Quiz</h2>
-                        <time class="subtitle">Crie Quizzes das suas aulas<time>
-                    </div>
-                </a>
+    <div class="containerSlid">
+        <h1 class="tituloSlides">Atividades</h1>
+        <section class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev" style="background: transparent; opacity: 1; top: 42%; ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="transform: scaleX(1)">
+                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L269.3 256 406.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/>
+                    </svg>
+                </button>
+                <button class="splide__arrow splide__arrow--next" style="background: transparent; opacity: 1; top: 42%;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L370.7 256 233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L178.7 256 41.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg>
+                </button>
+          </div>
 
-                <a href="/lacuna/home/<%= idet %>" id="card" class="card letras">
-                    <div class="inner">
-                        <h2 class="title">Complete a Frase</h2>
-                        <time class="subtitle">Crie exercicios para completar<time>
-                    </div>
-                </a>
+            <div class="splide__track">
+                  <ul class="splide__list">
+
+                    <li class="splide__slide">
+                    <a href="/portal/alfabeto/<%= idet %>" id="card" class="card  alfabeto">
+                            <div class="block alfabeto">
+                                <h2 class="title">Desenhe letras do alfabeto</h2>
+
+                                <object id="cardBlue" data="../assets/img/card.svg" type="image/svg+xml"></object>
+                            </div>
+                    </a> 
+                    </li>
+
+                     <li class="splide__slide">
+                        <a href="/quiz/home/<%= idet %> " id="card" class="card quizzes">
+                            <div class="block quiz">
+                                <h2 class="title">Crie Quizzes de forma fácil</h2>  
+                                <object id="cardBlue" data="../assets/img/card.svg" type="image/svg+xml"></object>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="splide__slide">
+                    <a href="/lacuna/home/<%= idet %>" id="card" class="card letras">
+                            <div class="block lacunas">
+                                <h2 class="title large">Crie exercícios de preencher<br>lacunas</h2>
+                                <object id="cardBlue" data="../assets/img/card.svg" type="image/svg+xml"></object>
+                            </div>
+                    </a>
+                    </li>
+
+                    <li class="splide__slide">
+                        <a href="/cruzadas/home/<%= idet %>" id="card" class="card letras">
+                            <div class="block lacunas">
+                                <object id="cardBlue" data="../assets/img/card.svg" type="image/svg+xml"></object>
+                                <h2 class="title large">Crie exercícios de <br>palavras cruzadas</h2>
+                            </div>
+                        </a>
+                    </li>
+
+                  </ul>
             </div>
-        </div>
+        </section>    
+    </div>
+    <h1 class="tituloLinhaTemp">Filtre suas atividades<br>por ano letivo</h1>
 
         <div class="linhaTemporal">
             <div class="flexRow">
-
-                <div>
-                    <h1>1º Ano</h1>
+                <div class="Divano1">
+                    <button class="btLinhadoTempo">
+                        <img id="bolinhaBt" class="botao" src="../assets/img/botao1.png" alt="">
+                        <div class="pedestal">
+                            <img src="../assets/img/pedestal.png" alt="">
+                        </div>
+                            <input type="text" value="<%= idet %>" id="ident">               
+                            <select id="optionAno1" multiple>
+                                <option value="quiz">Quiz</option>
+                                <option value="lacuna">Lacunas</option>
+                            </select>
+                    </button>   
+                </div>
+                <div class="Divano2">
+                    <button class="btLinhadoTempo">
+                        <img class="botao" src="../assets/img/botao2.png" alt="">
+                        <div class="pedestal">
+                            <img src="../assets/img/pedestal.png" alt="">
+                        </div>
                         <input type="text" value="<%= idet %>" id="ident">               
-                        <select id="optionAno1">
-                            <option value=""></option>
-                            <option value="quiz">Quiz</option>
-                            <option value="letras">Letras</option>
-                        </select>
-                            <ul id="ano1"></ul>
+                            <select id="optionAno2" multiple>
+                                <option value="quiz">Quiz</option>
+                                <option value="lacuna">Lacunas</option>
+                            </select>
+                    </button>
                 </div>
-                <div>
-                    <h1>2º Ano</h1>
-                    <input type="text" value="<%= idet %>" id="ident">               
-                        <select id="optionAno2">
-                            <option value=""></option>
-                            <option value="quiz">Quiz</option>
-                            <option value="letras">Letras</option>
-                        </select>
-                        <ul id="ano2"></ul>
+                <div class="Divano3">
+                    <button class="btLinhadoTempo">
+                        <img class="botao" src="../assets/img/botao3.png" alt="">
+                        <div class="pedestal">
+                            <img src="../assets/img/pedestal.png" alt="">
+                        </div>
+                        <input type="text" value="<%= idet %>" id="ident">               
+                            <select id="optionAno3" multiple>
+                                <option value="quiz">Quiz</option>
+                                <option value="lacuna">Lacunas</option>
+                            </select>
+                    </button>
                 </div>
-                <div>
-                    <h1>3º Ano</h1>
-                    <input type="text" value="<%= idet %>" id="ident">               
-                        <select id="optionAno3">
-                            <option value=""></option>
-                            <option value="quiz">Quiz</option>
-                            <option value="letras">Letras</option>
-                        </select>
-                        <ul id="ano3"></ul>
+                <div class="Divano4">
+                    <button class="btLinhadoTempo">
+                        <img class="botao" src="../assets/img/botao4.png" alt="">
+                        <div class="pedestal">
+                            <img src="../assets/img/pedestal.png" alt="">
+                        </div>
+                        <input type="text" value="<%= idet %>" id="ident">               
+                            <select id="optionAno4" multiple>
+                                <option value="quiz">Quiz</option>
+                                <option value="lacuna">Lacunas</option>
+                            </select>
+                    </button>
                 </div>
             </div>
         </div>
     </main>
+    <div id="dv-modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Meu modal com HTML</h1>
+                <button class="btn" onclick="closeModal('dv-modal1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul id="ano1"></ul>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
+    <div id="dv-modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Meu modal com HTML</h1>
+                <button class="btn" onclick="closeModal('dv-modal2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul id="ano2"></ul>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
+    <div id="dv-modal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Meu modal com HTML</h1>
+                <button class="btn" onclick="closeModal('dv-modal3')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul id="ano3"></ul>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
+    <div id="dv-modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Meu modal com HTML</h1>
+                <button class="btn" onclick="closeModal('dv-modal4')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul id="ano4"></ul>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 
     <footer>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="ondas">
-            <path fill="#7269e9" fill-opacity="1" d="M0,288L48,282.7C96,277,192,267,288,240C384,213,480,171,576,176C672,181,768,235,864,218.7C960,203,1056,117,1152,106.7C1248,96,1344,160,1392,192L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
+        <img id="linha" class="linha" src="../assets/img/linha.gif">
+        <img id="fundo" class="fundo" src="../assets/img/fundoFooter.png" alt="">
     </footer>
 
 </body>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="../script/indexPortal.js" type="text/javascript"></script>
+    <script>
+        var splide = new Splide( '.splide', {
+            type: 'loop',
+            perPage: 3,
+            perMove: 1,
+            focus: '0',
+            pagination: false,
+            fixedWidth: '30vw',
+            fixedHeight: '20rem',
+            padding: '4vw',
+            gap: '25px',
+            breakpoints: {
+                1900:{
+                    fixedWidth: '25vw',
+                    padding: '8vw'
+                },
+                1100: {
+                    fixedHeight: '10rem',
+                }
+            }
+        });
+        splide.mount();
+        function closeModal(mn) {
+            let modal = document.getElementById(mn);
+            modal.children[0].children[1].children[0].innerHTML = ''
+
+            if (typeof modal == 'undefined' || modal === null)
+                return;
+
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </html>

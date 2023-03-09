@@ -10,11 +10,12 @@
         <div class="content">
             <% for(let i = 0; i < questionChosen.perguntas.length; i++){  %>
                 <div class="answers">
-
-                    <label for=""><%= questionChosen.perguntas[i].pergunta %></label>
+                    <label for=""><%= questionChosen.perguntas[i].pergunta.replace('+', '_____') %></label>
                     <input type="text" id="inputResp<%= i %>">
+
                     <button type="submit" class="botaoEnvioResp">Responder</button>
                     <label for=""></label>
+                    
                     <input id="respCerta<%= i %>" type="hidden" name="" value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>">
                     <i id="check<%= i %>" style="display: none;"><img src="/assets/img/Check.jpeg" alt=""></i>
                     <i id="noCheck<%= i %>" style="display: none;"><img src="/assets/img/NoCheck.jpeg" alt=""></i>

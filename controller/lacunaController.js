@@ -8,16 +8,17 @@ let NewUser = mongoose.model('NewUser', newUser)
 const lacunaController = {
     home: async function(req, res) {
         await NewUser.find({ _id: req.params.id })
-            .then(resp => {
-                let arrayData = resp
+            .then(resp => {  
+                let arrayDataUser = resp
+                let user = req.params.id
                 let idUser = req.params.id
-                res.render('lacunas/index', { arrayData, idUser }, ((err, html) => {
+                res.render('lacunas/index', { arrayDataUser, idUser }, ((err, html) => {
                         if (err) {
                             res.render('lacunas/404Lac', { user })
                             console.warn(`erro ao renderizar a página de Letras, ${err}`)
                         }
                         res.send(html)
-                    })) //Colocar erro caso a pagina não for renderizada 
+                    })) 
             })
             .catch(err => {
                 let user = req.params.id
@@ -25,21 +26,21 @@ const lacunaController = {
                 console.warn(`Erro ao encontrar o Usuário, ${err}`)
             })
     },
+    
     question: async function(req, res) {
         await NewUser.findOne({ _id: req.params.id })
             .then(resp => {
-
-                user = req.params.id
-                let questionChosen = resp.letras[req.params.index]
+                user = req.params.id 
+                let questionChosen = resp.lacuna[req.params.index]
                 let identifierQuestion = req.params.index
                 res.render('lacunas/question', { questionChosen, identifierQuestion, user }, ((err, html) => {
                     if (err) {
                         res.render('lacunas/404Lac', { user })
                         console.warn(`erro ao renderizar a página de Letras, ${err}`)
                     }
-                    res.send(html)
+                    res.send(html)  
                 }))
-            })
+            })   
             .catch((err) => {
                 let user = req.params.id
                 res.render('lacunas/404Lac', { user })
@@ -47,11 +48,12 @@ const lacunaController = {
                 return
             })
     },
+
     editQuestion: async function(req, res) {
         await NewUser.findOne({ _id: req.params.idQuestion })
             .then(resp => {
                 user = req.params.idQuestion
-                let questionChosen = resp.letras[req.params.index]
+                let questionChosen = resp.lacuna[req.params.index]
                 let identifierQuestion = req.params.index
                 res.render('lacunas/edit', { questionChosen, identifierQuestion, user }, ((err, html) => {
                     if (err) {
@@ -68,44 +70,30 @@ const lacunaController = {
                 return
             })
     },
-    form: async function(req, res) {
-        let newLetras = {
 
+    form: async function(req, res) {
+        let number = req.body.number;
+        let j = 1
+        let newLetras = {
+            id: Math.random().toString(36).substring(2),
             titulo: req.body.activityTitle,
             Ano: req.body.serieNames,
-            perguntas: [{
-                    pergunta: req.body.questionsActivities1.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.responseActivities1 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities2.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.responseActivities2 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities3.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities3 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities4.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities4 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities5.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities5 },
-                    ],
-                },
-            ]
+            perguntas: new Array()
         }
-        NewUser.findOneAndUpdate({ _id: req.params.id }, { $push: { letras: newLetras } }, { upsert: true, new: true })
+        for (let i = 1; i <= number; i++) {
+            let pergunta = `titleQuestion${i}`
+            let resposta = `responseQuestion${i}`
+
+            newLetras.perguntas.push({
+                pergunta: req.body[pergunta],
+                resposta: [
+                    {respostaCorreta: req.body[resposta]}
+                ]
+            })
+
+            j = j + 4
+        }
+        NewUser.findOneAndUpdate({ _id: req.params.id }, { $push: { lacuna: newLetras } }, { upsert: true, new: true })
             .then(result => {
                 res.redirect(`/lacuna/home/${req.params.id}`)
             })
@@ -117,49 +105,34 @@ const lacunaController = {
 
 
     },
+
     formEdit: async function(req, res) {
         let identifierQuestion = req.params.index
-
+        let questionLength = req.body.questionLength[0]
+        console.log(questionLength)
+ 
+            
         let updateLetras = {
-
+            id: Math.random().toString(36).substring(2),
             titulo: req.body.activityTitle,
             Ano: req.body.serieNames,
-            perguntas: [{
-                    pergunta: req.body.questionsActivities0.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.responseActivities0 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities1.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.responseActivities1 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities2.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities2 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities3.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities3 },
-                    ],
-                },
-                {
-                    pergunta: req.body.questionsActivities4.replace('+', '____'),
-                    resposta: [
-                        { respostaCorreta: req.body.questionsActivities4 },
-                    ],
-                },
-            ]
+            perguntas: new Array,
         }
 
+        for (let i = 0; i < questionLength; i++) { 
+            let pergunta = `questionsActivities${i}`
+            let resposta = `responseActivities${i}` 
+            
+             updateLetras.perguntas.push({
+                pergunta: req.body[pergunta],
+                resposta: [
+                    {respostaCorreta: req.body[resposta]}
+                ]  
+            })
+        }
         NewUser.findOneAndUpdate({ _id: req.params.id, }, {
                 $set: {
-                    [`letras.${identifierQuestion}`]: updateLetras
+                    [`lacuna.${identifierQuestion}`]: updateLetras
                 }
             })
             .then(result => {
@@ -173,18 +146,17 @@ const lacunaController = {
 
 
     },
-    formDelete: async function(req, res) {
-        let identifierQuestion = req.params.index
-        user = req.params.id
 
-        NewUser.findOneAndRemove({[`letras.titulo`]: 'teste' })
-            .then(results => {
-                console.log(results)
+    formDelete: async function(req, res) {
+        user = req.params.id
+        NewUser.updateOne({_id: user}, {$pull: {lacuna: {id: `${req.params.titulo}`}}})
+            .then(result => {
+                console.log(result)
+                res.redirect(`/lacuna/home/${user}`)
             })
             .catch(err => {
                 console.log(err)
             })
-        res.redirect(`/lacuna/home/${ req.params.id }`)
     }
 
 

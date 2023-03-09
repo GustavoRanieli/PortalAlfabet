@@ -89,17 +89,17 @@ form {
   background-size: 100% 100%;
 }
 
-.quiz1, .quiz2, .quiz3, .quiz4, .quiz5 {
+.quiz1, .quiz2, .quiz3, .quiz4, .quiz5, .quiz6, .quiz7, .quiz8, .quiz9, .quiz10, .quiz11, .quiz12, .quiz13, .quiz14, .quiz15, .quiz16, .quiz17, .quiz18, .quiz19, .quiz20 {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem 0 0.5rem 0;
 }
-.quiz1 h4, .quiz2 h4, .quiz3 h4, .quiz4 h4, .quiz5 h4 {
+.quiz1 h4, .quiz2 h4, .quiz3 h4, .quiz4 h4, .quiz5 h4, .quiz6 h4, .quiz7 h4, .quiz8 h4, .quiz9 h4, .quiz10 h4, .quiz11 h4, .quiz12 h4, .quiz13 h4, .quiz14 h4, .quiz15 h4, .quiz16 h4, .quiz17 h4, .quiz18 h4, .quiz19 h4, .quiz20 h4{
   text-align: center;
 }
-.quiz1 input, .quiz2 input, .quiz3 input, .quiz4 input, .quiz5 input {
+.quiz1 input, .quiz2 input, .quiz3 input, .quiz4 input, .quiz5 input, .quiz6 input, .quiz7 input, .quiz8 input, .quiz9 input, .quiz10 input, .quiz11 input, .quiz12 input, .quiz13 input, .quiz14 input, .quiz15 input, .quiz16 input, .quiz17 input, .quiz18 input, .quiz19 input, .quiz20 input {
   width: 300px;
   height: 35px;
   border: 1px solid black;
@@ -108,4 +108,3 @@ form {
   margin: 5px 0;
 }
 
-/*# sourceMappingURL=quiz.css.map */

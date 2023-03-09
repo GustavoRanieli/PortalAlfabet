@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link type="text/css" rel="stylesheet" href="/style/css/cruzadas.css">
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <button class="btn" id="btnCreate">Mostrar Resposta</button>
+        <button class="btn" id="btnPlay">Play</button>
+        <br /><br />
+
+        <div class="center crossword" id="crossword"></div><br />
+
+        <div class="center">
+
+           
+
+            
+            <% for(i=0; i < questionChosen.perguntas.length; i++){ %>
+            <div class="line">
+                <input class="word" type="hidden" value="<%= questionChosen.perguntas[i].resposta[0].respostaCorreta %>" />
+                <p class="clue" type="text" ><%= i %> - <%= questionChosen.perguntas[i].pergunta %> </p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="/script/cruzadasScript/logicaCruzadas.js"></script>
+
+</html>
+
